@@ -138,7 +138,8 @@ export default function DashboardPage() {
                     family_size: p.family_size || 4
                 };
 
-                const res = await fetch("http://localhost:8000/schemes/match", {
+                const apiBase = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
+                const res = await fetch(`${apiBase}/schemes/match`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ profile: profilePayload })
